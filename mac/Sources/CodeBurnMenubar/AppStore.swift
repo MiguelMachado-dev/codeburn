@@ -2027,6 +2027,9 @@ final class AppStore {
                 if primary == nil { primary = row }
                 details.append(row)
             }
+            if usage.primary != nil, details.count > 1 {
+                details.append(details.removeFirst())
+            }
         }
         return QuotaSummary(providerFilter: filter, connection: connection, primary: primary, details: details, planLabel: kimiUsage?.plan ?? "Kimi Code", footerLines: [])
     }
